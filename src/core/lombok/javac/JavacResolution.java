@@ -157,6 +157,7 @@ public class JavacResolution {
 		messageSuppressor.disableLoggers();
 		try {
 			EnvFinder finder = findEnv(node);
+			if (finder.copyAt() == null) return java.util.Collections.emptyMap();
 			
 			TreeMirrorMaker mirrorMaker = new TreeMirrorMaker(node.getTreeMaker(), node.getContext());
 			JCTree copy = mirrorMaker.copy(finder.copyAt());
